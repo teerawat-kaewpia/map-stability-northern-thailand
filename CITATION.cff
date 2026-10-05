@@ -1,0 +1,50 @@
+cff-version: 1.2.0
+message: "If you use this package, please cite the article and this package."
+title: "Comparable Accuracy, Divergent Hotspots: replication package (code, test points, derived data and pre-registration records)"
+type: dataset
+version: "1.0.0"
+authors:
+  - family-names: Kaewpia
+    given-names: Teerawat
+    affiliation: "Chiang Rai Rajabhat University"
+    orcid: "https://orcid.org/0009-0003-2329-4128"
+  - family-names: Changruenngam
+    given-names: Thanayut
+    affiliation: "Chiang Rai Rajabhat University"
+    orcid: "https://orcid.org/0000-0002-3483-0278"
+    email: thanayut.cha@crru.ac.th
+  - family-names: Suantai
+    given-names: Suthep
+    affiliation: "Chiang Mai University"
+  - family-names: Prommai
+    given-names: Tanaphong
+    affiliation: "University of Phayao"
+  - family-names: Klinhnu
+    given-names: Jumrus
+    affiliation: "Chiang Rai Rajabhat University"
+license:
+  - MIT
+  - CC-BY-4.0
+  - ODbL-1.0
+keywords:
+  - background sampling
+  - algorithm choice
+  - map agreement
+  - structural similarity index
+  - pre-specified analysis
+  - industrial location
+preferred-citation:
+  type: article
+  title: "Comparable Accuracy, Divergent Hotspots: A Pre-specified Crossed Experiment on Background Radius and Algorithm Choice in Industrial-Location Suitability Mapping, Northern Thailand"
+  journal: "Geographies"
+  authors:
+    - family-names: Kaewpia
+      given-names: Teerawat
+    - family-names: Changruenngam
+      given-names: Thanayut
+    - family-names: Suantai
+      given-names: Suthep
+    - family-names: Prommai
+      given-names: Tanaphong
+    - family-names: Klinhnu
+      given-names: Jumrus

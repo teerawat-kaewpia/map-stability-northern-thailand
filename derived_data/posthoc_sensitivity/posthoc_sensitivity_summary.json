@@ -1,0 +1,86 @@
+{
+ "S1": {
+  "aggregation_claims": {
+   "a_med_draws_of_med_folds": {
+    "range_5km_plus": [
+     0.9697,
+     0.9756
+    ],
+    "within_0.970_0.976_at_3dp": true,
+    "spread_10km": 0.00358,
+    "spread_10km_le_0.004": true
+   },
+   "b_med_folds_of_med_draws": {
+    "range_5km_plus": [
+     0.9697,
+     0.9762
+    ],
+    "within_0.970_0.976_at_3dp": true,
+    "spread_10km": 0.00354,
+    "spread_10km_le_0.004": true
+   },
+   "c_pooled_median": {
+    "range_5km_plus": [
+     0.9695,
+     0.9755
+    ],
+    "within_0.970_0.976_at_3dp": false,
+    "spread_10km": 0.00347,
+    "spread_10km_le_0.004": true
+   },
+   "d_pooled_mean": {
+    "range_5km_plus": [
+     0.9656,
+     0.9746
+    ],
+    "within_0.970_0.976_at_3dp": false,
+    "spread_10km": 0.00661,
+    "spread_10km_le_0.004": false
+   }
+  },
+  "max_abs_diff_any_order": 0.00478
+ },
+ "S2_ties": {
+  "max_cells_equal_threshold": 3,
+  "max_excess_over_10pct": 2,
+  "valid_cells": 382056
+ },
+ "S2_audit_top10_max_abs_diff": 5.551115123125783e-17,
+ "S2_consensus": [
+  {
+   "set": "A_all90",
+   "km2_f_ge_0.8": 4429.5,
+   "km2_f_ge_0.9": 1844.25,
+   "km2_f_eq_1": 926.0
+  },
+  {
+   "set": "B_no1km_75",
+   "km2_f_ge_0.8": 6316.0,
+   "km2_f_ge_0.9": 5050.75,
+   "km2_f_eq_1": 2950.0
+  }
+ ],
+ "S3": [
+  {
+   "set": "A_all90",
+   "dependent_cells": 146655,
+   "share_radius": 0.3553566634654999,
+   "share_algorithm": 0.19636745750904083,
+   "share_draw": 0.04444818198680878,
+   "share_radius_x_algorithm": 0.1377737671136856,
+   "share_interactions_with_draw": 0.2660539448261261
+  },
+  {
+   "set": "B_no1km_75",
+   "dependent_cells": 57244,
+   "share_radius": 0.07252315431833267,
+   "share_algorithm": 0.40120309591293335,
+   "share_draw": 0.09251169115304947,
+   "share_radius_x_algorithm": 0.09370461851358414,
+   "share_interactions_with_draw": 0.34005749225616455
+  }
+ ],
+ "S4": {
+  "rows": 9
+ }
+}

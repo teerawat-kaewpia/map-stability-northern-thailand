@@ -1,0 +1,323 @@
+{
+  "experiment": "map-stability under background radius and learner choice",
+  "declared": "2026-10-01",
+  "status": "inputs, test points and runner locked; Amendments 1-4 recorded; NO background drawn and NO model fitted on study data",
+  "relation_to_paper_C": "Separate. This lock does not reference, extend or supersede artifact_lock_2026-09-27.json. Paper C's transfer results, Figure 9 and its per-fold tables are read-only here and are not regenerated.",
+  "inputs": [
+    {
+      "file": "D:/Clude Code GIS/THESIS_PHD_RP-SP/RF_RP/paper_C/03_results/data/presence_base_9prov_full.csv",
+      "bytes": 1368393,
+      "sha256": "7b17915bea56c946f2755831f0b78b88f01cfbf62ef861200477808d565887af",
+      "role": "SOURCE EVIDENCE ONLY - must not be read by the runner (2,868 rows, presence=1 on 734 only; pre-QC labelling). See Amendment 1, A1.1."
+    },
+    {
+      "file": "D:/Clude Code GIS/THESIS_PHD_RP-SP/RF_RP/paper_C/03_results/data/analysis_dataset_m3_full_r10.csv",
+      "bytes": 1367868,
+      "sha256": "3f7d6464a54e192ed7caa7bf2baf2a3687252e0f9186ae32cdc3c845d2ba86c7",
+      "role": "reference only - presences identical to the training input; backgrounds are regenerated per radius (A1.1)"
+    },
+    {
+      "file": "D:/Clude Code GIS/THESIS_PHD_RP-SP/RF_RP/paper_B/03_results/rasters/boundary_9prov_32647.gpkg",
+      "bytes": 3121152,
+      "sha256": "b6b3a54a5bcdf937a58a251fa2ee9fe14fc29204d2ab07120c217a676dd8dc83",
+      "role": "study polygon and per-province polygons (ADM1_TH, TH50-TH58) for training-province confinement and test-point drawing (A1.2-A1.4)"
+    },
+    {
+      "file": "D:/Clude Code GIS/THESIS_PHD_RP-SP/RF_RP/paper_B/03_results/rasters/grid_forest_2568_17prov.tif",
+      "bytes": 2713729,
+      "sha256": "c1cbb40d4076abf5e7b498c9bcd1ce95c02a50f7070e660c320d1693553ba70c",
+      "role": "covariate raster"
+    },
+    {
+      "file": "D:/Clude Code GIS/THESIS_PHD_RP-SP/Raw data/rasters/grid_slope_17prov.tif",
+      "bytes": 95817394,
+      "sha256": "c43e2b259dd3d9737a0bba873b780c4708f98a0c94bfa3523e7f70f2ade1065c",
+      "role": "covariate raster"
+    },
+    {
+      "file": "D:/Clude Code GIS/THESIS_PHD_RP-SP/Raw data/rasters/grid_dist_road_17prov.tif",
+      "bytes": 75497710,
+      "sha256": "1aceca4b9def58fade08bb4c94bf119a79d697c1551c3e76d61ea0c02dd1ca5f",
+      "role": "covariate raster"
+    },
+    {
+      "file": "D:/Clude Code GIS/THESIS_PHD_RP-SP/Raw data/rasters/grid_dist_rail_17prov.tif",
+      "bytes": 89143889,
+      "sha256": "4a7b74e724681b80b62a29189ac9ca762a73da96707321e8d9655bdd2d4abcbb",
+      "role": "covariate raster"
+    },
+    {
+      "file": "D:/Clude Code GIS/THESIS_PHD_RP-SP/Raw data/rasters/grid_dist_water_17prov.tif",
+      "bytes": 68111742,
+      "sha256": "bdbb8588b5a5933fe2b484ca20c0e6cfe29676ecfee2c6cf30a89b85f76600ea",
+      "role": "covariate raster"
+    },
+    {
+      "file": "D:/Clude Code GIS/THESIS_PHD_RP-SP/Raw data/rasters/grid_dist_cbd_17prov.tif",
+      "bytes": 83839189,
+      "sha256": "1aaddf0c213433b547db5ebadab8584c036e22c043902ce8dc9a07bd9f55dbaf",
+      "role": "covariate raster"
+    },
+    {
+      "file": "D:/Clude Code GIS/THESIS_PHD_RP-SP/Raw data/rasters/grid_dist_dryport_17prov.tif",
+      "bytes": 138959945,
+      "sha256": "89ddcca32c8793c77df7b0f54bfd6aaa4ee015de0b16c166e8c9d62065fd2d49",
+      "role": "covariate raster"
+    },
+    {
+      "file": "D:/Clude Code GIS/THESIS_PHD_RP-SP/Raw data/rasters/grid_nl_17prov.tif",
+      "bytes": 21163262,
+      "sha256": "c166037e3957f063aa706ec08b3d3006f3fe9f50b3f5ada2d4a5ca676d25a381",
+      "role": "covariate raster"
+    },
+    {
+      "file": "D:/Clude Code GIS/THESIS_PHD_RP-SP/Raw data/rasters/grid_builtup_17prov.tif",
+      "bytes": 2081267,
+      "sha256": "b0a2e6b0707e03084a9773b6bed5256d5a9dc2326cf83289a6a523d51518c389",
+      "role": "covariate raster"
+    },
+    {
+      "file": "D:/Clude Code GIS/THESIS_PHD_RP-SP/Raw data/rasters/dist_railway_new_km.tif",
+      "bytes": 78982600,
+      "sha256": "c278f32e10d023e0d4560b78c43bd66e58bc44f67b554a1a79b29fcfc5aab549",
+      "role": "covariate raster"
+    },
+    {
+      "file": "D:/Clude Code GIS/THESIS_PHD_RP-SP/RF_RP/data/processed/analysis_dataset_m3_base_clean.csv",
+      "bytes": 1462595,
+      "sha256": "699d63aff5203528d74f1d4fc4f5d9df13347a97c8ac3da27a3c4b8d5b876665",
+      "role": "TRAINING PRESENCE INPUT - 2,859 rows, all presence=1 (A1.1)",
+      "added_by": "Amendment 1"
+    },
+    {
+      "file": "D:/Clude Code GIS/THESIS_PHD_RP-SP/RF_RP/paper_C/03_results/scripts/phase1b_radius_comparison.py",
+      "bytes": 13733,
+      "sha256": "79ccba1321bdab8a1fa57657c421dc2b4f48be3d18a7433c591cb56d90a2ce58",
+      "role": "implements covariate 11 for points and the ring/background sampling logic (A1.8)",
+      "added_by": "Amendment 1"
+    },
+    {
+      "file": "D:/Clude Code GIS/THESIS_PHD_RP-SP/RF_RP/paper_C/03_results/scripts/paperA_suitability_uncertainty_maps.py",
+      "bytes": 8912,
+      "sha256": "a8be1c6a81ef1ffa2f2019dce4ec4f640bfba343a8dc8a85faec0ea22275e122",
+      "role": "implements covariate 11 on the 500 m prediction grid (A1.8)",
+      "added_by": "Amendment 1"
+    },
+    {
+      "file": "D:/Clude Code GIS/THESIS_PHD_RP-SP/RF_RP/paper_C/03_results/scripts/paperA_validation_utils.py",
+      "bytes": 1744,
+      "sha256": "1bd068d67924f37d4a763d81a0df091eb1a923810ea49b3e4647b73c1bbee0c2",
+      "role": "defines the fixed 50 km spatial-block grid used for inner CV and threshold choice (A1.5, A1.6)",
+      "added_by": "Amendment 1",
+      "role_corrected_by_A4": "NOT used by the runner. The original role text above is wrong: spatial_block_labels anchors the grid at the data minimum, so it is not a fixed grid (A4.1). Kept for traceability."
+    },
+    {
+      "file": "D:/Clude Code GIS/THESIS_PHD_RP-SP/RF_RP/paper_C/03_results/scripts/paperC_spatial_transfer_lopo.py",
+      "bytes": 19191,
+      "sha256": "bb681ca9d10a21252ecb2d23a29b10e258fcbfee27f5624f93014c126327ac51",
+      "role": "source of the locked training-sampling budget rule (lines 121-148) referenced by Amendment 3; not executed by this experiment",
+      "added_by": "Amendment 3"
+    }
+  ],
+  "missing_inputs": [],
+  "covariate_11_dist_border_CK_km": {
+    "source": "computed from coordinates, not a raster (A1.8)",
+    "point_wgs84": {
+      "lat": 20.3622,
+      "lon": 100.0894,
+      "name": "Chiang Khong customs"
+    },
+    "transform": "pyproj.Transformer.from_crs('EPSG:4326','EPSG:32647', always_xy=True)",
+    "formula": "sqrt((E-E_ck)^2 + (N-N_ck)^2) / 1000  [km, Euclidean]",
+    "implemented_in": [
+      "paper_C/03_results/scripts/phase1b_radius_comparison.py",
+      "paper_C/03_results/scripts/paperA_suitability_uncertainty_maps.py"
+    ],
+    "limitation": "Euclidean, not network distance"
+  },
+  "nightlight_provenance_withdrawn_by_A1": {
+    "file": "D:/Clude Code GIS/THESIS_PHD_RP-SP/Raw data/rasters/grid_nl_17prov.tif",
+    "sha256": "c166037e3957f063aa706ec08b3d3006f3fe9f50b3f5ada2d4a5ca676d25a381",
+    "mtime_utc": "2026-05-08",
+    "product": "NPP-VIIRS-like nighttime lights, Version 2, annual, year 2024",
+    "producer": "Chen Zuoqi and co-authors; distributed via Harvard Dataverse doi:10.7910/DVN/YGIVCD, licence CC0 1.0",
+    "method_for_the_year_used": "deep-learning super-resolution reconstruction, an attention U-Net with skip connections (Chen et al., 2026, J. Remote Sensing 6:0874, doi:10.34133/remotesensing.0874). The 2021 ESSD paper (doi:10.5194/essd-13-889-2021) documents the earlier cross-sensor-calibrated series and covers 2000-2018 only, so it does NOT document this layer.",
+    "release_caveat": "The provider re-released the 2022-2024 Version 2 files in July 2026. The grid used here was derived on 2026-05-08, so it is the earlier release. It is kept deliberately, so that this experiment uses the same covariate values as the locked Paper C results.",
+    "what_it_is_not": "It is not a raw VIIRS observation and carries no legal or administrative attribute."
+  },
+  "nightlight_provenance": {
+    "file": "D:/Clude Code GIS/THESIS_PHD_RP-SP/Raw data/rasters/grid_nl_17prov.tif",
+    "sha256": "c166037e3957f063aa706ec08b3d3006f3fe9f50b3f5ada2d4a5ca676d25a381",
+    "mtime": "2026-05-08",
+    "verified": {
+      "derived_from": "LongNTL_2024.tif in provider folder '2024_HasMask_Version1'",
+      "sidecar_lineage": "corrected VIIRS 2024 median composite x global mask (cVIIRS_Median_2024_3.tif x WT2013global_Setnull.tif), computed 2025-04-12 in producer working dirs ChenZuoqi\\LongNTL",
+      "producer": "Zuoqi Chen and co-authors; distributed via Harvard Dataverse doi:10.7910/DVN/YGIVCD"
+    },
+    "version_and_release": "UNDETERMINED - file predates the provider's December 2025 Version 2 update (notice: Version 2 data downloaded before December 2025 must be re-downloaded) and the July 2026 re-release of 2022-2024",
+    "raster_values": "unchanged; same covariate values as the locked Paper C results"
+  },
+  "predeclaration_original": {
+    "file": "00_predeclaration/predeclaration_2026-10-01.md",
+    "bytes": 7419,
+    "sha256": "f7aac79dcc61af3f956d87f16d145bb839e5312581288fc6a24bc27ac7f9212b",
+    "note": "hashed before any run; later deviations are amendments appended to the file, which changes this hash and must be re-recorded"
+  },
+  "predeclaration": {
+    "file": "00_predeclaration/predeclaration_2026-10-01.md",
+    "bytes": 27329,
+    "sha256": "8cf2b9c3c13a3a4b54f55b20da6a88d6323b4fe3c01acb296a365f9ee8279b12",
+    "note": "re-recorded after Amendment 4 (appended; the first 20,794 bytes = original + A1-A3, byte-identical to the version hashed 3eb53d06...)"
+  },
+  "amendments": [
+    {
+      "id": 1,
+      "date": "2026-10-01",
+      "before_any_run": true,
+      "summary": "training input -> clean 2,859-presence file; province membership by FPROVNAME; training background confined to training provinces at every radius; shared test background (seed 314159) generated once; seeds vary training-background order only; threshold = max TSS on inner 50 km spatial-block OOF, ties -> highest finite, positive if >= threshold; SSIM sensitivity 21x21; covariate 11 locked; V2/deep-learning nightlight claims withdrawn, raster unchanged"
+    },
+    {
+      "id": 2,
+      "date": "2026-10-01",
+      "before_any_run": true,
+      "summary": "A1.3 sentence 'held-out province contributes nothing to fitting' withdrawn: split is by registry province; 6 presences lie in another province's polygon, creating exceptions in 6 folds in two directions (listed); A1.4 completed with a sampling budget of max(20000, 200*n_test) candidates per held-out province and the outcome label 'incomplete under the locked sampling budget'"
+    },
+    {
+      "id": 3,
+      "date": "2026-10-01",
+      "before_any_run": true,
+      "summary": "training background n_bg = 2,859 - n_test per LOPO fold (2,859 for map models); Paper C's 6-round budget rule (round i draws i*max(20*n_bg,20000), stop at 3*n_bg kept, first n_bg complete) for every radius and seed, label 'incomplete under the locked training-sampling budget'; distances to training presences only; same seed restarts the stream for every radius within a fold (paired); background shared by all three learners; R-inf implemented in the new runner without the outer condition"
+    },
+    {
+      "id": 4,
+      "date": "2026-10-01",
+      "before_any_run": true,
+      "summary": "runner-level procedures U1-U14 locked: absolute 50 km blocks; threshold tie tolerance 1e-12; map grid from locked boundary (382,056 valid cells); 90 maps, similarity summarised across seeds; SSIM full-window-valid averaging; study-wide top 10% with hotspot counts; permutation 10 repeats; SHAP 1,000 cells / 100 background, LR PermutationExplainer seed 161803 max_evals 115; LOFO seed 42 (conditional); atomic writes with validated resume; lock role of paperA_validation_utils.py corrected"
+    }
+  ],
+  "pending_lock_records": [],
+  "six_registry_polygon_mismatches": [
+    "[registry ID 1 redacted]",
+    "[registry ID 2 redacted]",
+    "[registry ID 3 redacted]",
+    "[registry ID 4 redacted]",
+    "[registry ID 5 redacted]",
+    "[registry ID 6 redacted]"
+  ],
+  "test_point_generator": {
+    "file": "exp_map_stability/01_scripts/make_test_points.py",
+    "bytes": 6881,
+    "sha256": "986932a55477c1a71941e4a63253a62ab0d2b6fa415f564582293636a3a4d6b2",
+    "recorded_before_execution_utc": "2026-10-01T06:53:39Z",
+    "implementation_choices_not_in_amendments": [
+      "fresh numpy.random.default_rng(314159) per held-out province (independent of processing order)",
+      "whole budget B=max(20000,200*n_test) drawn at once: all B eastings then all B northings, uniform in the province polygon's bounding box; draw index j=(e[j],n[j])",
+      "filters: inside province polygon (shapely within); nearest of all 2,859 clean presences >= 500 m; no missing value in any of the 11 covariates",
+      "first n_test passing in draw-index order; if fewer, write points found with _INCOMPLETE suffix and do not score the fold",
+      "covariate unit factors as in phase1b_radius_comparison.py (distance rasters /1000 except dist_railway_new_km); covariate 11 per A1.8",
+      "script verifies the SHA-256 of every locked input before reading and aborts on mismatch"
+    ]
+  },
+  "test_points": {
+    "generated_utc": "2026-10-01T06:55:59Z",
+    "seed": 314159,
+    "generator_sha256": "986932a55477c1a71941e4a63253a62ab0d2b6fa415f564582293636a3a4d6b2",
+    "status": "all nine complete within the locked sampling budget",
+    "determinism": "generator run twice; all 10 output files byte-identical",
+    "files": [
+      {
+        "file": "exp_map_stability/02_data/test_points/test_points_TH50.csv",
+        "province": "Chiang Mai",
+        "ADM1_PCODE": "TH50",
+        "rows": 906,
+        "budget_B": 181200,
+        "last_draw_index_used": 2191,
+        "sha256": "8b8bada635966eb6cb1944f048116e51ae7cb730b6b54bab8c57798372a8ad59"
+      },
+      {
+        "file": "exp_map_stability/02_data/test_points/test_points_TH51.csv",
+        "province": "Lamphun",
+        "ADM1_PCODE": "TH51",
+        "rows": 332,
+        "budget_B": 66400,
+        "last_draw_index_used": 731,
+        "sha256": "a7e2b726a36992aa772a45158802d127a4201b5173258efc26dbb26a2a69a424"
+      },
+      {
+        "file": "exp_map_stability/02_data/test_points/test_points_TH52.csv",
+        "province": "Lampang",
+        "ADM1_PCODE": "TH52",
+        "rows": 468,
+        "budget_B": 93600,
+        "last_draw_index_used": 1206,
+        "sha256": "4c3730e75ae73c91c16fd670216e00394d281d0c3262d81ad4ea161dbfeffb68"
+      },
+      {
+        "file": "exp_map_stability/02_data/test_points/test_points_TH53.csv",
+        "province": "Uttaradit",
+        "ADM1_PCODE": "TH53",
+        "rows": 201,
+        "budget_B": 40200,
+        "last_draw_index_used": 495,
+        "sha256": "971fe542e6bebb42f52aefd56c820654e2a6a17b47c1dc6880ed8f7f454dbec9"
+      },
+      {
+        "file": "exp_map_stability/02_data/test_points/test_points_TH54.csv",
+        "province": "Phrae",
+        "ADM1_PCODE": "TH54",
+        "rows": 113,
+        "budget_B": 22600,
+        "last_draw_index_used": 303,
+        "sha256": "b1442ba10405ff2a6ea7fa07a49281a2886f64641b39b2c1e4d4f6d56ee04cfc"
+      },
+      {
+        "file": "exp_map_stability/02_data/test_points/test_points_TH55.csv",
+        "province": "Nan",
+        "ADM1_PCODE": "TH55",
+        "rows": 146,
+        "budget_B": 29200,
+        "last_draw_index_used": 231,
+        "sha256": "81a8db5c923c47403ee5588ac7fdb9d30bce0981d326a25787e33f383aabdc73"
+      },
+      {
+        "file": "exp_map_stability/02_data/test_points/test_points_TH56.csv",
+        "province": "Phayao",
+        "ADM1_PCODE": "TH56",
+        "rows": 81,
+        "budget_B": 20000,
+        "last_draw_index_used": 131,
+        "sha256": "d641a98098a418a76d2fe02dc2858d1b56ba822ebbacb4195530c6cbaf01f98a"
+      },
+      {
+        "file": "exp_map_stability/02_data/test_points/test_points_TH57.csv",
+        "province": "Chiang Rai",
+        "ADM1_PCODE": "TH57",
+        "rows": 559,
+        "budget_B": 111800,
+        "last_draw_index_used": 1130,
+        "sha256": "ddcce7b502c01487ca006801d3c3e2c6816a172c8f3aede3cbdeb2ad85eded34"
+      },
+      {
+        "file": "exp_map_stability/02_data/test_points/test_points_TH58.csv",
+        "province": "Mae Hong Son",
+        "ADM1_PCODE": "TH58",
+        "rows": 53,
+        "budget_B": 20000,
+        "last_draw_index_used": 121,
+        "sha256": "134570f6b50902e797fad5670a0891531b5a041d6637e722483f93026587796d"
+      }
+    ],
+    "manifest": {
+      "file": "exp_map_stability/02_data/test_points/test_points_manifest.csv",
+      "sha256": "e99b50f1fef235dd9742632722885548ca6a39a60ceb89fe731be97a7d0514bd"
+    },
+    "total_rows": 2859
+  },
+  "runner": {
+    "file": "exp_map_stability/01_scripts/run_map_stability.py",
+    "bytes": 34547,
+    "sha256": "7f7944423b656a0043e00462b442ea7cb86bfd02d2b9263725ec4fbe1e5be64d",
+    "recorded_utc": "2026-10-01T07:21:51Z",
+    "status": "recorded before any background was drawn or any model fitted on study data; exercised only in --dry-run and on synthetic data"
+  }
+}

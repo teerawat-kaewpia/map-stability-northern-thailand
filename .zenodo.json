@@ -1,0 +1,24 @@
+{
+  "title": "Comparable Accuracy, Divergent Hotspots: replication package (code, test points, derived data and pre-registration records)",
+  "upload_type": "software",
+  "version": "1.0.0",
+  "description": "<p>Replication package for Kaewpia, T.; Changruenngam, T.; Suantai, S.; Prommai, T.; Klinhnu, J. Comparable Accuracy, Divergent Hotspots: A Pre-specified Crossed Experiment on Background Radius and Algorithm Choice in Industrial-Location Suitability Mapping, Northern Thailand. Geographies (MDPI).</p><p>Contents: analysis code, the shared test points (restricted values removed), all derived result tables and post hoc outputs, the pre-declaration with Amendments 1-4 (six registry identifiers redacted), and SHA-256 records for every input, output and released file.</p><p>Not included: firm coordinates (DIW registry), the Royal Forest Department forest layer and the outputs derived from it, and the State Railway of Thailand planned-railway alignment and its distance raster. See README, section 'Available and not available'.</p>",
+  "creators": [
+    {"name": "Kaewpia, Teerawat", "affiliation": "Chiang Rai Rajabhat University", "orcid": "0009-0003-2329-4128"},
+    {"name": "Changruenngam, Thanayut", "affiliation": "Chiang Rai Rajabhat University", "orcid": "0000-0002-3483-0278"},
+    {"name": "Suantai, Suthep", "affiliation": "Chiang Mai University"},
+    {"name": "Prommai, Tanaphong", "affiliation": "University of Phayao"},
+    {"name": "Klinhnu, Jumrus", "affiliation": "Chiang Rai Rajabhat University"}
+  ],
+  "keywords": [
+    "background sampling",
+    "algorithm choice",
+    "map agreement",
+    "structural similarity index",
+    "pre-specified analysis",
+    "industrial location"
+  ],
+  "license": "MIT",
+  "notes": "Licensed by component: code under MIT; derived tables, pre-registration documents and integrity records under CC BY 4.0; the test points under ODbL 1.0 (values derived from OpenStreetMap). See LICENSE.",
+  "access_right": "open"
+}

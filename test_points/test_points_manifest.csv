@@ -1,0 +1,10 @@
+ADM1_PCODE,province_th,province_en,n_test,budget_B,n_inside_polygon,n_inside_and_ge_500m,n_complete_within_budget,status,last_draw_index_used,file,rows,sha256_original_file
+TH50,เชียงใหม่,Chiang Mai,906,181200,75731,74246,73751,complete,2191,test_points_TH50.csv,906,8b8bada635966eb6cb1944f048116e51ae7cb730b6b54bab8c57798372a8ad59
+TH51,ลำพูน,Lamphun,332,66400,30530,29523,29465,complete,731,test_points_TH51.csv,332,a7e2b726a36992aa772a45158802d127a4201b5173258efc26dbb26a2a69a424
+TH52,ลำปาง,Lampang,468,93600,36440,35718,35621,complete,1206,test_points_TH52.csv,468,4c3730e75ae73c91c16fd670216e00394d281d0c3262d81ad4ea161dbfeffb68
+TH53,อุตรดิตถ์,Uttaradit,201,40200,16879,16626,16229,complete,495,test_points_TH53.csv,201,971fe542e6bebb42f52aefd56c820654e2a6a17b47c1dc6880ed8f7f454dbec9
+TH54,แพร่,Phrae,113,22600,9178,9063,9056,complete,303,test_points_TH54.csv,113,b1442ba10405ff2a6ea7fa07a49281a2886f64641b39b2c1e4d4f6d56ee04cfc
+TH55,น่าน,Nan,146,29200,18508,18358,18280,complete,231,test_points_TH55.csv,146,81a8db5c923c47403ee5588ac7fdb9d30bce0981d326a25787e33f383aabdc73
+TH56,พะเยา,Phayao,81,20000,12135,12039,11886,complete,131,test_points_TH56.csv,81,d641a98098a418a76d2fe02dc2858d1b56ba822ebbacb4195530c6cbaf01f98a
+TH57,เชียงราย,Chiang Rai,559,111800,57886,56264,55875,complete,1130,test_points_TH57.csv,559,ddcce7b502c01487ca006801d3c3e2c6816a172c8f3aede3cbdeb2ad85eded34
+TH58,แม่ฮ่องสอน,Mae Hong Son,53,20000,7656,7644,7561,complete,121,test_points_TH58.csv,53,134570f6b50902e797fad5670a0891531b5a041d6637e722483f93026587796d

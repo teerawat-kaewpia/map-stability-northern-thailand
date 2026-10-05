@@ -1,0 +1,3 @@
+set,dependent_cells,share_radius,share_algorithm,share_draw,share_radius_x_algorithm,share_interactions_with_draw
+A_all90,146655,0.35535666,0.19636746,0.044448182,0.13777377,0.26605394
+B_no1km_75,57244,0.072523154,0.4012031,0.09251169,0.09370462,0.3400575

@@ -1,0 +1,7 @@
+record,registry_province,lies_in_polygon_of,distance_to_polygon_edge
+1,Lamphun,Chiang Mai,"19,823 m"
+2,Lamphun,Chiang Mai,"17,275 m"
+3,Chiang Mai,Lamphun,926 m
+4,Chiang Mai,Lamphun,"1,958 m"
+5,Chiang Rai,Phayao,75 m
+6,Phrae,Nan,"5,345 m"

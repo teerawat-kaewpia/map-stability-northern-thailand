@@ -1,0 +1,22 @@
+# Key packages, pinned to the versions in environment_lock.txt (the full lock written before the experiment was run).
+name: map-stability
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11.9
+  - pip
+  - pip:
+      - numpy==2.3.1
+      - pandas==2.3.0
+      - scipy==1.16.1
+      - scikit-learn==1.7.1
+      - xgboost==3.0.4
+      - shap==0.48.0
+      - scikit-image==0.26.0
+      - geopandas==1.1.0
+      - pyogrio==0.11.0
+      - shapely==2.1.1
+      - pyproj==3.7.1
+      - rasterio==1.4.4
+      - matplotlib==3.10.3
+      - joblib==1.5.2

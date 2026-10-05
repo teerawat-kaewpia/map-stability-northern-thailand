@@ -1,0 +1,11 @@
+item,file,last_modified_local_Asia_Bangkok,sha256,"note: local file-system dates, not an external timestamp"
+pre-declaration (with Amendments 1-4),predeclaration_2026-10-01.md,2026-10-01 14:21:34,8cf2b9c3c13a3a4b54f55b20da6a88d6323b4fe3c01acb296a365f9ee8279b12,
+input lock,input_lock_2026-10-01.json,2026-10-01 14:21:51,744a1aa22c42389c097d02ee5bdb3a447b037228361e959822d96eeb18ddf266,
+test-point generator,make_test_points.py,2026-10-01 13:53:27,986932a55477c1a71941e4a63253a62ab0d2b6fa415f564582293636a3a4d6b2,
+test points (manifest),test_points_manifest.csv,2026-10-01 13:55:44,e99b50f1fef235dd9742632722885548ca6a39a60ceb89fe731be97a7d0514bd,
+analysis script,run_map_stability.py,2026-10-01 14:20:11,7f7944423b656a0043e00462b442ea7cb86bfd02d2b9263725ec4fbe1e5be64d,
+run log (first session),run_log_2026-10-01.txt,2026-10-01 17:33:31,b558731c93b6da5fe4054fcb99d7b9d65d676c601dcf19aafd3387cb5c94a8bd,
+run log (resumed session),run_log_2026-10-01_resume1.txt,2026-10-01 22:22:58,18acae4656a2f15b178b2496b50b5897acb2e119e879dbe493a225bb4bca4f4c,
+output manifest,results_manifest_2026-10-01.json,2026-10-02 09:16:58,f87c8a58459fe08553229ae0bcdc7b930ef1733b1d2aa09c18d97c0c65eb3640,
+post-hoc specification,posthoc_consensus_spec_2026-10-02.md,2026-10-02 12:07:05,d8a067852b3720d83d2821ec851c25b3487f8f12926c743ca73030827a8d1857,
+post-hoc output hashes,outputs_sha256.json,2026-10-02 12:08:00,24dd1ba7a7f0d8be31464355127546f8fb8aa21b97f980e42f916deb076c89c5,

@@ -1,0 +1,19 @@
+file,bytes,sha256,role,in_this_release
+presence_base_9prov_full.csv,1368393,7b17915bea56c946f2755831f0b78b88f01cfbf62ef861200477808d565887af,"SOURCE EVIDENCE ONLY - must not be read by the runner (2,868 rows, presence=1 on 734 only; pre-QC labelling). See Amendment 1, A1.1.",no
+analysis_dataset_m3_full_r10.csv,1367868,3f7d6464a54e192ed7caa7bf2baf2a3687252e0f9186ae32cdc3c845d2ba86c7,reference only - presences identical to the training input; backgrounds are regenerated per radius (A1.1),no
+boundary_9prov_32647.gpkg,3121152,b6b3a54a5bcdf937a58a251fa2ee9fe14fc29204d2ab07120c217a676dd8dc83,"study polygon and per-province polygons (ADM1_TH, TH50-TH58) for training-province confinement and test-point drawing (A1.2-A1.4)",no
+grid_forest_2568_17prov.tif,2713729,c1cbb40d4076abf5e7b498c9bcd1ce95c02a50f7070e660c320d1693553ba70c,covariate raster,no
+grid_slope_17prov.tif,95817394,c43e2b259dd3d9737a0bba873b780c4708f98a0c94bfa3523e7f70f2ade1065c,covariate raster,no
+grid_dist_road_17prov.tif,75497710,1aceca4b9def58fade08bb4c94bf119a79d697c1551c3e76d61ea0c02dd1ca5f,covariate raster,no
+grid_dist_rail_17prov.tif,89143889,4a7b74e724681b80b62a29189ac9ca762a73da96707321e8d9655bdd2d4abcbb,covariate raster,no
+grid_dist_water_17prov.tif,68111742,bdbb8588b5a5933fe2b484ca20c0e6cfe29676ecfee2c6cf30a89b85f76600ea,covariate raster,no
+grid_dist_cbd_17prov.tif,83839189,1aaddf0c213433b547db5ebadab8584c036e22c043902ce8dc9a07bd9f55dbaf,covariate raster,no
+grid_dist_dryport_17prov.tif,138959945,89ddcca32c8793c77df7b0f54bfd6aaa4ee015de0b16c166e8c9d62065fd2d49,covariate raster,no
+grid_nl_17prov.tif,21163262,c166037e3957f063aa706ec08b3d3006f3fe9f50b3f5ada2d4a5ca676d25a381,covariate raster,no
+grid_builtup_17prov.tif,2081267,b0a2e6b0707e03084a9773b6bed5256d5a9dc2326cf83289a6a523d51518c389,covariate raster,no
+dist_railway_new_km.tif,78982600,c278f32e10d023e0d4560b78c43bd66e58bc44f67b554a1a79b29fcfc5aab549,covariate raster,no
+analysis_dataset_m3_base_clean.csv,1462595,699d63aff5203528d74f1d4fc4f5d9df13347a97c8ac3da27a3c4b8d5b876665,"TRAINING PRESENCE INPUT - 2,859 rows, all presence=1 (A1.1)",no
+phase1b_radius_comparison.py,13733,79ccba1321bdab8a1fa57657c421dc2b4f48be3d18a7433c591cb56d90a2ce58,implements covariate 11 for points and the ring/background sampling logic (A1.8),no
+paperA_suitability_uncertainty_maps.py,8912,a8be1c6a81ef1ffa2f2019dce4ec4f640bfba343a8dc8a85faec0ea22275e122,implements covariate 11 on the 500 m prediction grid (A1.8),no
+paperA_validation_utils.py,1744,1bd068d67924f37d4a763d81a0df091eb1a923810ea49b3e4647b73c1bbee0c2,"defines the fixed 50 km spatial-block grid used for inner CV and threshold choice (A1.5, A1.6)",no
+paperC_spatial_transfer_lopo.py,19191,bb681ca9d10a21252ecb2d23a29b10e258fcbfee27f5624f93014c126327ac51,source of the locked training-sampling budget rule (lines 121-148) referenced by Amendment 3; not executed by this experiment,no
