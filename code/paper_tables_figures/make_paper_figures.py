@@ -95,7 +95,7 @@ box(12, 95, 76, 13, "Step 2  Shared held-out test sets (Section 2.6)",
     "The same test points for every configuration", "lock")
 arrow(50, 94.4, 50, 90.6)
 box(12, 74, 76, 16.5, "Step 3  Crossed experiment (Section 2.7)",
-    "Modeling choices: 6 background radii (1, 5, 10, 20, 25 km, R∞; Equation (2))\n"
+    "Modeling choices: 6 background radii (1, 5, 10, 20, 25 km and R∞, Equation (2))\n"
     "× 3 algorithms (random forest, XGBoost, logistic regression) = 18 configurations\n"
     "Experimental setting: 5 background draws per configuration, summarized by median\n"
     "270 LOPO units · 90 maps · fixed settings · no per-map rescaling", "core")

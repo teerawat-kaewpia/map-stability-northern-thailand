@@ -56,7 +56,7 @@ for L in LRN:
                                         for r in RAD])
 table("**Table S9.** Mean absolute SHAP value × 100 (probability scale) by algorithm, covariate and background ring, "
       "with the sign of the covariate–SHAP Spearman correlation (+ or −). Map models of the first pre-declared "
-      "background draw, evaluated on the same 1,000 cells; logistic-regression values are sampled approximations.",
+      "background draw, evaluated on the same 1,000 cells. Logistic-regression values are sampled approximations.",
       ["Algorithm", "Covariate"] + [RL[r] for r in RAD], rows, "ll" + "r" * 6)
 
 # S10 permutation and LOFO by ring
@@ -117,8 +117,8 @@ rows += [[f"{LN[a]} vs {LN[b]}", RL[r], ag("across_learners", r, f"{a}_{r}", f"{
          for r in RAD for a, b in (("RF", "XGB"), ("RF", "LR"), ("XGB", "LR"))]
 table("**Table S12.** Sensitivity of SSIM to window size: 21 × 21 cells (10.5 km) instead of 7 × 7. Median of the "
       "nine provincial values, each a median over the five background draws, with the provincial range in brackets. "
-      "Upper rows: each radius against the 10 km map within one algorithm; lower rows: pairs of algorithms at the "
-      "same radius.", ["Comparison", "Radius", "SSIM raw", "SSIM rank"], rows, "llrr")
+      "Upper rows compare each radius with the 10 km map within one algorithm, and lower rows compare pairs of "
+      "algorithms at the same radius.", ["Comparison", "Radius", "SSIM raw", "SSIM rank"], rows, "llrr")
 
 # S13 post-hoc between-algorithm vs between-draw overlap (10 km)
 ph = pd.read_csv(EXP / "04_notes" / "posthoc_jaccard_seed_vs_learner_2026-10-02.csv")
@@ -136,8 +136,8 @@ for code in PROV:
         rows.append([PROV[code], f"{LN[a]} vs {LN[b]}", f"{btw.median():.3f}", f"{wit.median():.3f}"])
 table(f"**Table S13.** Post-hoc comparison at the 10 km radius: hotspot overlap (Jaccard, top 10%) between "
       f"algorithms at the same background draw (5 values per cell) against overlap between draws within the same "
-      f"algorithm (10 draw pairs for each of the two algorithms; 20 values per cell). The between-algorithm median "
-      f"is lower in {lower} of 27 cells. This comparison was defined after the confirmatory results had been read; it "
+      f"algorithm (10 draw pairs for each of the two algorithms, 20 values per cell). The between-algorithm median "
+      f"is lower in {lower} of 27 cells. This comparison was defined after the confirmatory results had been read. It "
       f"is descriptive and involves no significance test.",
       ["Province", "Algorithm pair", "Between algorithms", "Between draws"], rows, "llrr")
 
