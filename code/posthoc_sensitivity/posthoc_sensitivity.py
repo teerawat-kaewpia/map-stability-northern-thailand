@@ -174,6 +174,8 @@ pd.DataFrame([{"record": i + 1, "registry_province": a.strip(), "lies_in_polygon
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+import matplotlib.patheffects as pe
+plt.rcParams["font.family"] = "Segoe UI"                 # audit 2026-11-05 m2
 bnd = gpd.read_file(RF / "paper_B/03_results/rasters/boundary_9prov_32647.gpkg").to_crs(32647).sort_values("ADM1_PCODE")
 fig, ax = plt.subplots(figsize=(5.6, 5.4))
 cols = ["#cde2fb", "#f6d7b0", "#d5ecd4", "#e6d6f2", "#fbe3e8", "#d9eef2", "#f2ead0", "#e1e4f5", "#eadfd3"]
@@ -181,8 +183,10 @@ bnd.plot(ax=ax, color=cols, edgecolor="#4a4a4a", linewidth=0.6)
 s4d = {x["fold"]: x for x in s4}
 for _, r in bnd.iterrows():
     pnt = r.geometry.representative_point()
-    ax.text(pnt.x, pnt.y, f"{r.ADM1_PCODE}\n{r.ADM1_EN}\nn = {s4d[r.ADM1_PCODE]['n_test_presences']}", ha="center",
-            va="center", fontsize=6.5, color="#222222")
+    dx, dy = {"TH58": (22000, 69000), "TH51": (-4000, -40000)}.get(r.ADM1_PCODE, (0, 0))   # audit m2
+    ax.text(pnt.x + dx, pnt.y + dy, f"{r.ADM1_PCODE}\n{r.ADM1_EN}\nn = {s4d[r.ADM1_PCODE]['n_test_presences']}", ha="center",
+            va="center", fontsize=5.6 if r.ADM1_PCODE == "TH51" else 6.5, color="#222222",
+            path_effects=[pe.withStroke(linewidth=2.2, foreground="white")])   # audit m2: legible over boundaries
 x0, y0, x1, y1 = bnd.total_bounds
 ax.plot([x0 + 5000, x0 + 55000], [y0 + 12000, y0 + 12000], color="#222222", lw=2)
 ax.text(x0 + 30000, y0 + 18000, "50 km", ha="center", fontsize=7)

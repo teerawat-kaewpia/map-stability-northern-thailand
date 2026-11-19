@@ -1,0 +1,11 @@
+{
+ "spec_sha256": "7434b645295c28cffc7d33e4eff1ba8642353017a3a21da7808d71ace7c9082a",
+ "outputs": {
+  "P3_ssim_structure_by_province.csv": "3b85551f509fd0210d790801420b1a2aed6ff182c4aa896e9b911c24fff62d75",
+  "P3_ssim_structure_summary.csv": "c017c57e816b14e3ce935bd0bc3ee385dfee48c8c37845038dbc9574e891f52b",
+  "P4_between_draw_10km_by_province.csv": "1df2d63eb4b884ea20f1596c912dc66005024b046cbab4c340cc1724a4089382",
+  "P4_between_draw_10km_summary.csv": "0815c9cb29e7d35c07a167205dd8242b8086f300afb965051385eaf6a9ea7cc8",
+  "P6_variance_components.csv": "906eb68687167ff41de5028bded7fb0292aea6f998fa22943093058059b84f1b",
+  "P7_confirmed_vs_unchecked.csv": "bd92f2b93f312e55583efca997c2e2c3f5ddc95bf7354722afb3fa65bf17fc85"
+ }
+}

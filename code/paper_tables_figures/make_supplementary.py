@@ -35,8 +35,8 @@ def table(cap, head, rows, align):
 
 
 out.append("# Supplementary material\n")
-out.append("**Comparable Accuracy, Divergent Hotspots: A Pre-specified Crossed Experiment on Background Radius and "
-           "Algorithm Choice in Industrial-Location Suitability Mapping, Northern Thailand**\n")
+out.append("**How Background Sampling and Algorithm Choice Change Industrial-Location Suitability Maps: "
+           "Evidence from Northern Thailand**\n")
 out.append("Tables S1–S8 give in tabular form the data that the main text presents as figures (Table S1: the presence data mapped in Figure 1). Tables S9 and S10 give the "
            "values behind the factor-reliance-by-ring figures. Table S11 gives the spread of held-out "
            "discrimination across the five background draws, Table S12 the map-agreement results for the "
@@ -136,7 +136,7 @@ for code in PROV:
         rows.append([PROV[code], f"{LN[a]} vs {LN[b]}", f"{btw.median():.3f}", f"{wit.median():.3f}"])
 table(f"**Table S13.** Post-hoc comparison at the 10 km radius: hotspot overlap (Jaccard, top 10%) between "
       f"algorithms at the same background draw (5 values per cell) against overlap between draws within the same "
-      f"algorithm (10 draw pairs for each of the two algorithms, 20 values per cell). The between-algorithm median "
+      f"algorithm, for each of the two algorithms of the compared pair (10 draw pairs per algorithm, 20 values per cell). The between-algorithm median "
       f"is lower in {lower} of 27 cells. This comparison was defined after the confirmatory results had been read. It "
       f"is descriptive and involves no significance test.",
       ["Province", "Algorithm pair", "Between algorithms", "Between draws"], rows, "llrr")
@@ -152,8 +152,9 @@ for b in blocks:
     old = re.match(r"\*\*Table (S\d+)\.\*\*", b).group(1)
     renum[int(mp[old][1:])] = re.sub(r"^\*\*Table S\d+\.\*\*", f"**Table {mp[old]}.**", b)
 head = re.sub(r"Tables S1–S8 give.*?hotspot overlap\.\n",
-              "Tables S1–S13 give the tables cited in the main text, numbered in the order in which they are first "
-              "cited.\n", head, flags=re.S)
+              "Tables S1–S20 give the tables cited in the main text for the pre-declared analyses and the sensitivity "
+              "analyses, numbered in the order in which they are first cited. Tables S21–S26 give the post hoc "
+              "analyses added in peer review (Section 2.13 of the main text) and are placed after them.\n", head, flags=re.S)
 text = head + "\n" + "\n".join(renum[k] for k in sorted(renum))
 text = re.sub(r"(?<![\d.,])(\d),(\d{3})(?![\d,])", r"\1\2", text)
 for k, v in {"summarised": "summarized", "modelling": "modeling", "standardised": "standardized",

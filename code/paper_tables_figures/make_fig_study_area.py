@@ -81,9 +81,8 @@ for s in axL.spines.values():
 pres = pd.read_csv(PRES)
 ax = axR
 bnd.plot(ax=ax, color=LAND, edgecolor=INK2, linewidth=0.6)
-for src, c, z in (("factory", "#2a78d6", 3), ("confirmed", "#eb6834", 4)):
-    s = pres[pres.source == src]
-    ax.scatter(s.easting, s.northing, s=3, color=c, lw=0, alpha=0.75, zorder=z)
+# all 2859 coordinates visually inspected (external inspector, after submission): one class, 2026-11-03
+ax.scatter(pres.easting, pres.northing, s=3, color="#2a78d6", lw=0, alpha=0.75, zorder=3)
 ck = pyproj.Transformer.from_crs("EPSG:4326", "EPSG:32647", always_xy=True).transform(100.0894, 20.3622)
 ax.scatter(*ck, marker="^", s=55, color=INK, zorder=6)
 for _, r in bnd.iterrows():
@@ -93,8 +92,7 @@ for _, r in bnd.iterrows():
 scalebar(ax, bx0 + 5000, by0 + 12000, 50)
 north(ax, bx1 - 15000, by1 - 5000)
 ax.set_aspect("equal"); ax.set_axis_off()
-hd = [Line2D([], [], ls="", marker="o", ms=5, color="#2a78d6", label=f"Not individually checked (n = {num((pres.source == 'factory').sum())})"),
-      Line2D([], [], ls="", marker="o", ms=5, color="#eb6834", label=f"Visually confirmed (n = {num((pres.source == 'confirmed').sum())})"),
+hd = [Line2D([], [], ls="", marker="o", ms=5, color="#2a78d6", label=f"Factory registry (n = {num(len(pres))})"),
       Line2D([], [], ls="", marker="^", ms=7, color=INK, label="Chiang Khong border crossing")]
 ax.legend(handles=hd, loc="upper left", fontsize=7, handletextpad=0.3, title="Industrial firm locations",
           title_fontsize=7.5, alignment="left", frameon=False)
@@ -105,9 +103,16 @@ for (xa, ya), (xb, yb) in (((bx1, by1), (rx0, ry1)), ((bx1, by0), (rx0, ry0))):
     fig.add_artist(ConnectionPatch(xyA=(xa, ya), coordsA=axL.transData, xyB=(xb, yb), coordsB=ax.transData,
                                    color=MUTED, lw=0.6, ls=(0, (3, 2))))
 ax.add_patch(Rectangle((rx0, ry0), rx1 - rx0, ry1 - ry0, fill=False, ec=INK2, lw=0.6, zorder=0, clip_on=False))
-axL.text(0.97, 0.015, "(a)", transform=axL.transAxes, ha="right", va="bottom", fontsize=9, fontweight="bold")
-ax.text(0.985, 0.015, "(b)", transform=ax.transAxes, ha="right", va="bottom", fontsize=9, fontweight="bold")
+ya = max(axL.get_position().y1, ax.get_position().y1) + 0.012          # audit 2026-11-05 m1: as Figures 2-10,
+for a_, lab in ((axL, "a"), (ax, "b")):                                  # one height for both panels
+    bb = a_.get_position()
+    fig.text((bb.x0 + bb.x1) / 2, ya, lab, ha="center", va="bottom", fontsize=9, fontweight="bold")
 
+# 2026-11-05: full frame on both panels whichever script calls this one (make_paper_figures hides top/right),
+# set on these axes only so that no global setting leaks into the other figures
+for a_ in fig.axes:
+    for s_ in a_.spines.values():
+        s_.set_visible(True)
 for ext in ("png", "pdf"):
     fig.savefig(HERE / f"fig_study_area.{ext}", dpi=DPI, bbox_inches="tight", pad_inches=0.04)
 print("written fig_study_area.png/.pdf")

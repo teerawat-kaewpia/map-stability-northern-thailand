@@ -69,55 +69,51 @@ import runpy
 runpy.run_path(str(HERE / "make_fig_study_area.py"))
 
 # ------------------------------------------------------------------ Fig 2 method flowchart
-fig, ax = plt.subplots(figsize=(6.5, 8.6))
-ax.set_xlim(0, 100); ax.set_ylim(4, 128); ax.set_axis_off()
+fig, ax = plt.subplots(figsize=(7.2, 6.6))
+ax.set_xlim(0, 132); ax.set_ylim(6, 118); ax.set_axis_off()
 FILL = {"lock": "#e8f1fc", "core": "#cde2fb", "q": "#f4f3ee", "syn": "#ffffff", "use": "#f4f3ee"}
 
 
 def box(x, y, w, h, title, body, kind, dashed=False):
     ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle="round,pad=0.4,rounding_size=1.5", fc=FILL[kind],
                                 ec="#256abf" if kind != "q" else INK2, lw=1.0, ls="--" if dashed else "-"))
-    ax.text(x + w / 2, y + h - 2.2, title, ha="center", va="top", fontsize=8.2, fontweight="bold", color=INK)
-    ax.text(x + w / 2, y + h - 6.4, body, ha="center", va="top", fontsize=6.8, color=INK2, linespacing=1.35)
+    ax.text(x + w / 2, y + h - 2.0, title, ha="center", va="top", fontsize=8.2, fontweight="bold", color=INK)
+    ax.text(x + w / 2, y + h - 6.6, body, ha="center", va="top", fontsize=7.2, color=INK2, linespacing=1.4)
 
 
 def arrow(x0, y0, x1, y1):
     ax.annotate("", xy=(x1, y1), xytext=(x0, y0), arrowprops=dict(arrowstyle="-|>", color=INK2, lw=0.9))
 
 
-box(12, 113, 76, 13, "Step 1  Lock data and design",
-    "2859 presences · 11 covariates · 9 provinces · 500 m grid\n"
-    "Pre-declaration, inputs, test points and code hashed before any fit", "lock")
-arrow(50, 112.4, 50, 108.6)
-box(12, 95, 76, 13, "Step 2  Shared held-out test sets (Section 2.6)",
-    "Leave-one-province-out, 9 folds\n"
-    "Test background ≥ 0.5 km from all presences, n = province presences (Equation (1))\n"
-    "The same test points for every configuration", "lock")
-arrow(50, 94.4, 50, 90.6)
-box(12, 74, 76, 16.5, "Step 3  Crossed experiment (Section 2.7)",
-    "Modeling choices: 6 background radii (1, 5, 10, 20, 25 km and R∞, Equation (2))\n"
-    "× 3 algorithms (random forest, XGBoost, logistic regression) = 18 configurations\n"
-    "Experimental setting: 5 background draws per configuration, summarized by median\n"
-    "270 LOPO units · 90 maps · fixed settings · no per-map rescaling", "core")
-for xc in (17, 50, 83):
-    arrow(50, 73.4, xc, 65.6)
-box(2, 44, 30, 20.5, "Step 4a  RQ1\nDiscrimination",
-    "\nHeld-out AUC (Equation (4))\nTSS at a training-only\nthreshold (Equations (5) and (6))\nκ ≡ TSS (Equations (7) and (8))", "q")
-box(35, 44, 30, 20.5, "Step 4b  RQ2\nMap agreement",
-    "\nSSIM, raw and rank,\n7 × 7 window (Equations (9)–(11))\nTop-10% hotspot Jaccard\n(Equations (12) and (13))",
-    "q")
-box(68, 44, 30, 20.5, "Step 4c  RQ3\nFactor reliance",
-    "\nMean |SHAP| and direction\n(Equation (14))\nPermutation ΔAUC (Equation (15))\nLeave-one-group-out\n(Equation (16))", "q")
-for xc in (17, 50, 83):
-    arrow(xc, 43.4, 50, 37.6)
-box(12, 21, 76, 16.5, "Step 5  Synthesis (exploratory, Section 2.11)",
-    "Hotspot frequency f over 90 maps (Equation (17)), no reference ring\n"
-    "Consensus core (f ≥ 0.9) · configuration-dependent (0 < f < 0.9) · never a hotspot\n"
-    "Share of variation: radius · algorithm · remainder (Equation (18))", "syn", dashed=True)
-arrow(50, 20.4, 50, 16.6)
-box(12, 5, 76, 11.5, "Step 6  Limits of use (Section 2.12)",
-    "Regional screening, not parcel selection\nNo configuration selected on AUC alone · no significance test on pixels",
-    "use")
+box(4, 104, 80, 12, "Step 1  Lock data and design",
+    "2859 firm locations, 11 covariates, nine provinces\nDesign, inputs and code fixed before any model was fitted", "lock")
+arrow(44, 103.4, 44, 99.6)
+box(4, 87, 80, 12, "Step 2  Shared held-out test sets (Section 2.6)",
+    "Each province held out in turn\nThe same test points for every configuration", "lock")
+arrow(44, 86.4, 44, 83.6)
+box(4, 70, 80, 13, "Step 3  Crossed experiment (Section 2.7)",
+    "6 background radii × 3 algorithms = 18 configurations\n5 background draws each, 90 maps on one 500 m grid", "core")
+for xc in (14, 44, 74):
+    arrow(44, 69.4, xc, 63.6)
+box(2, 47, 24, 16, "Step 4a\nDiscrimination", "\nHeld-out AUC\nand TSS", "q")
+box(32, 47, 24, 16, "Step 4b\nMap agreement", "\nSimilarity (SSIM)\nand hotspot overlap", "q")
+box(62, 47, 24, 16, "Step 4c\nFactor reliance", "\nSHAP, permutation\nand group removal", "q")
+for xc in (14, 44, 74):
+    arrow(xc, 46.4, 44, 40.6)
+box(4, 27, 80, 13, "Step 5  Synthesis (exploratory, Section 2.11)",
+    "Where hotspots are stable across configurations\nand where they depend on them", "syn", dashed=True)
+arrow(44, 26.4, 44, 22.6)
+box(4, 10, 80, 12, "Step 6  Limits of use (Section 2.12)",
+    "Regional screening, not parcel selection\nNo configuration chosen on AUC alone", "use")
+# revision 2026-11-04 (Reviewer 4): post hoc analyses outside the locked path
+ax.add_patch(FancyBboxPatch((94, 30), 36, 58, boxstyle="round,pad=0.4,rounding_size=1.5", fc="#ffffff", ec="#d9731f",
+                            lw=1.0, ls="--"))
+ax.text(112, 86, "Post hoc analyses\nadded during\npeer review", ha="center", va="top", fontsize=8.2,
+        fontweight="bold", color=INK)
+ax.text(112, 73.5, "Not part of the\npre-declaration\nSection 2.13\n\nTest background near firms\n"
+        "Agreement between draws\nSSIM structure term\nSHAP over five draws\nVariance decomposition\n"
+        "Six presences reassigned\nor excluded", ha="center", va="top", fontsize=7.2, color=INK2, linespacing=1.4)
+ax.annotate("", xy=(93.4, 76), xytext=(84.6, 76), arrowprops=dict(arrowstyle="-|>", color=INK2, lw=0.9, ls="--"))
 save(fig, "fig_method_flowchart")
 
 # ------------------------------------------------------------------ Fig 3 discrimination by radius
@@ -218,6 +214,14 @@ for i, (m, mlab) in enumerate(MET):
         ax.vlines(x, [s[1] for s in st], [s[2] for s in st], color=PCOL[(a, b)], lw=1.0, alpha=0.5)
         ax.plot(x, [s[0] for s in st], "-", color=PCOL[(a, b)], lw=1.4, marker=PMK[(a, b)], ms=4, mec="white",
                 mew=0.7, label=f"{SHORT[a]} vs {SHORT[b]}")
+    # revision R1-3 (post hoc, reviewer-requested): between-draw baseline of each algorithm at 10 km, open markers
+    bd = pd.read_csv(HERE.parent / "08_revision_posthoc" / "outputs" / "P4_between_draw_10km_summary.csv").set_index(
+        "learner")
+    for k, L in enumerate(("RF", "XGB", "LR")):
+        xb = RAD.index("10km") + 0.33 + 0.12 * k
+        ax.vlines(xb, bd.loc[L, f"{m}_min"], bd.loc[L, f"{m}_max"], color=COL[L], lw=1.0, alpha=0.5)
+        ax.plot(xb, bd.loc[L, f"{m}_median"], ls="none", marker=LMK[L], ms=4, mfc="white", mec=COL[L], mew=1.1,
+                label=f"{SHORT[L]}, between draws (10 km)")
     ax.set_xticks(range(6), XL)
     for ax in axs[i]:
         ax.set_ylim(-0.3 if m != "jaccard_top10" else 0, 1.02)
@@ -227,7 +231,7 @@ axs[0, 1].set_title("b", loc="center", fontsize=9, fontweight="bold", pad=4)
 for ax in axs[2]:
     ax.set_xlabel("Outer radius of the training-background ring (km)")
 axs[2, 0].legend(loc="lower right", fontsize=6.5)
-axs[2, 1].legend(loc="lower right", fontsize=6.5)
+axs[2, 1].legend(loc="lower right", fontsize=6.0, ncol=2)
 fig.tight_layout()
 save(fig, "fig_agreement_summary")
 
@@ -295,28 +299,39 @@ def ink_on(v, vmax):
     return "white" if v / vmax > 0.55 else INK
 
 
-# --- 10 km maps, three algorithms
-fig = plt.figure(figsize=(7.2, 3.3))
-axs = [fig.add_axes([0.005 + i * 0.333, 0.20, 0.325, 0.72]) for i in range(3)]
-for ax, L, s in zip(axs, ("RF", "XGB", "LR"), "abc"):
-    v = np.load(MAPS / f"{L}_10km_s42.npy")
-    im = ax.imshow(grid(v), cmap=BLUE, vmin=0, vmax=1, extent=ext, interpolation="nearest")
+# --- 10 km maps, three algorithms + hotspot agreement (2 x 2, revision 2026-11-04, Reviewer 4)
+AGREE = ListedColormap(["#ebeae4", "#f6c27a", "#d9731f", "#184f95"])
+fig = plt.figure(figsize=(7.2, 6.9))
+pos = [[0.01, 0.55, 0.47, 0.40], [0.51, 0.55, 0.47, 0.40], [0.01, 0.10, 0.47, 0.40], [0.51, 0.10, 0.47, 0.40]]
+axs = [fig.add_axes(q) for q in pos]
+m10 = {L: np.load(MAPS / f"{L}_10km_s42.npy") for L in ("RF", "XGB", "LR")}
+for ax, L, s in zip(axs[:3], ("RF", "XGB", "LR"), "abc"):
+    im = ax.imshow(grid(m10[L]), cmap=BLUE, vmin=0, vmax=1, extent=ext, interpolation="nearest")
+    plab(ax, f"{s}  {NAME[L]}")
+agree = sum((v >= np.quantile(v, 0.9)).astype(int) for v in m10.values())
+axs[3].imshow(grid(agree.astype(np.float32)), cmap=AGREE, vmin=0, vmax=3, extent=ext, interpolation="nearest")
+plab(axs[3], "d  Hotspot agreement")
+for ax in axs:
     bnd.boundary.plot(ax=ax, color=INK2, linewidth=0.35)
-    ax.set_axis_off(); ax.set_aspect("equal"); plab(ax, s)
+    ax.set_axis_off(); ax.set_aspect("equal")
 scalebar(axs[0], ext[0] + 5000, ext[2] + 10000)
 north(axs[0], ext[1] - 15000, ext[3] - 5000)
-cax = fig.add_axes([0.30, 0.11, 0.40, 0.03])
+cax = fig.add_axes([0.05, 0.055, 0.40, 0.016])
 cb = fig.colorbar(im, cax=cax, orientation="horizontal")
-cb.set_label("Predicted suitability score (0–1), same scale in every panel", fontsize=7, color=INK2)
+cb.set_label("Relative suitability score (0–1), panels a–c", fontsize=7, color=INK2)
 cb.ax.tick_params(labelsize=6.5)
+fig.legend([Patch(color=AGREE(i)) for i in range(4)],
+           ["Not in the top 10% of any algorithm", "Top 10% of one algorithm", "Top 10% of two algorithms",
+            "Top 10% of all three algorithms"], loc="lower left", ncol=2, fontsize=6.8, bbox_to_anchor=(0.50, 0.0),
+           frameon=False, title="Panel d", title_fontsize=7)
 save(fig, "fig_maps_10km")
 
-# --- provincial Jaccard heatmaps
-RNO = [r for r in RAD if r != "10km"]
-rowsA = [(f"{SHORT[L]}: {XL[RAD.index(r)]}" + ("" if r == "Rinf" else " km"), "across_radii", L, f"{L}_{r}", f"{L}_10km")
-         for L in ("RF", "XGB", "LR") for r in RNO]
-rowsB = [(f"{XL[RAD.index(r)]}" + ("" if r == "Rinf" else " km") + f": {SHORT[a]}–{SHORT[b]}", "across_learners", r,
-          f"{a}_{r}", f"{b}_{r}") for r in RAD for a, b in PAIRS]
+# --- provincial Jaccard heatmaps (simplified, revision 2026-11-04, Reviewer 4: 9 + 9 rows, 8.5 pt)
+RL6 = {"1km": "1 km", "5km": "5 km", "10km": "10 km", "Rinf": "R∞"}
+rowsA = [(f"{NAME[L]}: {RL6[r]} vs 10 km", "across_radii", L, f"{L}_{r}", f"{L}_10km")
+         for L in ("RF", "XGB", "LR") for r in ("1km", "5km", "Rinf")]
+rowsB = [(f"{RL6[r]}: {SHORT[a]} vs {SHORT[b]}", "across_learners", r, f"{a}_{r}", f"{b}_{r}")
+         for r in ("1km", "10km", "Rinf") for a, b in PAIRS]
 
 
 def jmat(rows):
@@ -328,26 +343,26 @@ def jmat(rows):
     return M
 
 
-fig, axs = plt.subplots(1, 2, figsize=(7.2, 7.6), gridspec_kw={"width_ratios": [1, 1], "wspace": 0.55})
-for ax, rows, step, s in ((axs[0], rowsA, 5, "a"), (axs[1], rowsB, 3, "b")):
+fig, axs = plt.subplots(2, 1, figsize=(7.2, 7.8))
+for ax, rows, s in ((axs[0], rowsA, "a"), (axs[1], rowsB, "b")):
     M = jmat(rows)
     im = ax.imshow(M, cmap=BLUE, vmin=0, vmax=1, aspect="auto")
     for i in range(M.shape[0]):
         for j in range(9):
-            ax.text(j, i, f"{M[i, j]:.2f}", ha="center", va="center", fontsize=4.8, color=ink_on(M[i, j], 1))
-    for y in np.arange(step, len(rows), step) - 0.5:
-        ax.axhline(y, color="white", lw=2)
-    ax.set_xticks(range(9), PNAME, rotation=50, ha="right", fontsize=6)
-    ax.set_yticks(range(len(rows)), [r[0] for r in rows], fontsize=6)
+            ax.text(j, i, f"{M[i, j]:.2f}", ha="center", va="center", fontsize=8.5, color=ink_on(M[i, j], 1))
+    for y in (2.5, 5.5):
+        ax.axhline(y, color="white", lw=2.5)
+    ax.set_xticks(range(9), PNAME, rotation=30, ha="right", fontsize=8.5)
+    ax.set_yticks(range(len(rows)), [r[0] for r in rows], fontsize=8.5)
     ax.grid(False); ax.tick_params(length=0)
     for sp in ax.spines.values():
         sp.set_visible(False)
     plab(ax, s)
-cax = fig.add_axes([0.30, 0.035, 0.40, 0.012])
+fig.subplots_adjust(left=0.30, right=0.98, top=0.96, bottom=0.16, hspace=0.45)
+cax = fig.add_axes([0.40, 0.035, 0.45, 0.012])
 cb = fig.colorbar(im, cax=cax, orientation="horizontal")
-cb.set_label("Jaccard overlap of the top-10% hotspots (median over draws)", fontsize=7, color=INK2)
-cb.ax.tick_params(labelsize=6)
-fig.subplots_adjust(left=0.13, right=0.98, top=0.96, bottom=0.17)
+cb.set_label("Hotspot overlap (Jaccard index)", fontsize=8.5, color=INK2)
+cb.ax.tick_params(labelsize=8)
 save(fig, "fig_jaccard_by_province")
 
 # --- factor reliance: pooled permutation + SHAP by algorithm
@@ -480,6 +495,10 @@ fig.savefig(HERE / "graphical_abstract.tif", dpi=762, pil_kwargs={"compression":
 plt.close(fig)
 im = Image.open(HERE / "graphical_abstract.tif").convert("RGB")          # flatten RGBA -> RGB for artwork checks
 im.save(HERE / "graphical_abstract.tif", compression="tiff_lzw", dpi=(762, 762))
+# 2026-11-05: the submission graphical abstract is the approved plain-language version, which overwrites the
+# earlier one drawn above (kept as graphical_abstract_before_v2_2026-11-05.*)
+import runpy
+runpy.run_path(str(HERE / "make_graphical_abstract_v2.py"), run_name="__main__")
 print("graphical abstract px:", im.size, f"core {core_km2:.1f} km2, dependent {dep_km2:.1f} km2, one map {one_map:.1f}")
 plt.rcParams["font.family"] = "Segoe UI"
 print("done")
